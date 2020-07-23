@@ -1,4 +1,4 @@
-FROM mono:6.8.0
+FROM mono:6.10.0.104
 
 ARG NUGET_VERSION=5.5.1
 
