@@ -4,8 +4,8 @@ set -e
 
 mono /usr/bin/nuget "$@"
 
-if [ "$NUGET_SIGN_MODE" == "cms" ];then
-    if [ "$1" == "pack" ] || [ "$1" == "sign" ];then
+if [ "$NUGET_SIGN_MODE" == "cms" ]; then
+    if [ "$1" == "pack" ] || [ "$1" == "sign" ]; then
         if [ -z ${NUGET_SIGN_CERT+x} ]; then
             echo "WARN: Output not signed: no sign certificate"
             exit 1
@@ -20,12 +20,13 @@ if [ "$NUGET_SIGN_MODE" == "cms" ];then
         OutputDirectory="."
         for k in "$@"
         do
-        i=$((i + 1));
-        case "${k,,}" in
-            -outputdirectory)  OutputDirectory=${!i}; break;; 
-            *)                                             ;;
-        esac
-        don
+            i=$((i + 1));
+            case "${k,,}" in
+                -outputdirectory)  OutputDirectory=${!i}; break;; 
+                *)                                             ;;
+            esac
+        done
+
         echo "Singing all files in [$OutputDirectory] ..."
         echo -e $NUGET_SIGN_CERT > /tmp/cert.pem
         for nupkg in $OutputDirectory/*.nupkg; do
