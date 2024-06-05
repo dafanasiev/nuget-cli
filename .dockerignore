@@ -1,2 +1,2 @@
-.git/
-LICENSE
+**
+!docker-entrypoint.sh
